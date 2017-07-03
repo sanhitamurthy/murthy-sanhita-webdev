@@ -1,0 +1,55 @@
+body {
+    width: 100%;
+    margin: auto;
+
+}
+/*h1 {*/
+/*color: blue;*/
+/*}*/
+
+/*#times {*/
+/*font-family: "Times New Roman";*/
+/*}*/
+
+/*.arialfont {*/
+/*font-family: "Arial";*/
+/*}*/
+
+/*.redp {*/
+/*color: red;*/
+/*font-family: "Agency FB";*/
+/*}*/
+
+.sidebyside {
+    display: inline;
+    float: left;
+    width: 100% ;
+}
+
+/*#blue {*/
+/*background: #0000ff;*/
+/*padding: 2em;*/
+/*margin-right: 1em;*/
+/*}*/
+/**/
+.clear {
+    clear: both;
+}
+
+@media screen and (min-width: 400px) {
+    .sidebyside {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #blue {
+        width: 80%;
+    }
+    #red {
+        width: 20%;
+    }
+    .sidebyside {
+        width: 50%;
+    }
+}
