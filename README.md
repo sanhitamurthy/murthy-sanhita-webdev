@@ -1,8 +1,11 @@
-# web-dev-template
+##About
 
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+My name is Sanhita Murthy and I am currently pursuing my masters in Computer Science at Northeastern University. My interest in Computer Science led me to pursue masters and I learn something new everyday!
+
+This repository is mainly created for the web dev course which I have taken in summer2-2017
+
+##Links:
+
+1. Heroku app:https://murthy-sanhita-webdev.herokuapp.com/
+2. Assignments:https://murthy-sanhita-webdev.herokuapp.com/assignment/index.html
+3. Project:https://murthy-sanhita-webdev.herokuapp.com/project/index.html
