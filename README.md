@@ -6,6 +6,6 @@ This repository is mainly created for the web dev course(CS5610) which I have ta
 
 # Links:
 
-1. Heroku app:https://murthy-sanhita-webdev.herokuapp.com/
-2. Assignments:https://murthy-sanhita-webdev.herokuapp.com/assignment/index.html
-3. Project:https://murthy-sanhita-webdev.herokuapp.com/project/index.html
+1. [Heroku app](https://murthy-sanhita-webdev.herokuapp.com/)
+2. [Assignments](https://murthy-sanhita-webdev.herokuapp.com/assignment)
+3. [Project](https://murthy-sanhita-webdev.herokuapp.com/project)
