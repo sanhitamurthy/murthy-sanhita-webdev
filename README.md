@@ -1,13 +1,11 @@
-# About Me
+# About:
 
-I'm Sanhita Murthy, MS in Computer Science student at Northeastern University, Boston, MA.
+My name is Sanhita Murthy and I am currently pursuing my masters in Computer Science at Northeastern University. My interest in Computer Science led me to pursue masters and I learn something new everyday!
 
-# Purpose of Repo
+This repository is mainly created for the web dev course(CS5610) which I have taken in summer2-2017.
 
-This repository is for my assignments for web dev course CS 5610 Summer 2 2017.
+# Links:
 
-# Heroku Links
-
-1. [Homepage](https://murthy-sanhita-webdev.herokuapp.com)
-2. [Project]()
-3. [Assignments](https://murthy-sanhita-webdev.herokuapp.com/assignment/)
+1. Heroku app:https://murthy-sanhita-webdev.herokuapp.com/
+2. Assignments:https://murthy-sanhita-webdev.herokuapp.com/assignment/index.html
+3. Project:https://murthy-sanhita-webdev.herokuapp.com/project/index.html
