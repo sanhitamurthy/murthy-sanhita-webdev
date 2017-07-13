@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TodoApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../../vendor/angular/angular.js">
+    </script>
+    <script src="app.js"></script>
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>-->
+    <link href="../../../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+
+<body>
+<!--<div class="container"> container is a class in bootstrap-->
+<h1>TodoApp</h1>
+<div ng-controller="TodoController"
+     ng-init="">
+    <label>Title</label>
+    <!--anywhere insidde the controller it can see the model. it can access it-->
+    <input ng-model="todo.title" class="form-control"/> <!--{{}} is a escape character that helps render data in some variable -->
+    <!--ng-model listens to the chnages and prograte to the listeners.-->
+    <!--each input tag has its own mvc inside it, like when we add text it updates
+    inside the input field. this is the litte m in the view-->
+    <label>Details</label>
+    <textarea ng-model="todo.details" class="form-control"></textarea>
+    <!--This variable is doubly bound-->
+    <!--{{hello}}-->
+    <!--another way controller can see what view declares -->
+    <!--<input ng-model="GoodBye"/>-->
+    <!--{{GoodBye}}-->
+    <!--{{title}} this propogates throughout the controller. this is all in
+    the browser and not server. This could be put anywhere,like a href, like
+    image. If its a check box or drop down etc where theres data, u use this ng-model-->
+    <!--todo={} clears out the input field everytime the add button is clicked-->
+
+    <button ng-click="addNote(todo);todo={}"
+            class="btn btn-block btn-primary"> Add Todo</button>
+    <button ng-click="updateTodo(todo);todo={}"
+            class="btn btn-block btn-success"> Update Todo</button>
+
+    <!--{{todos}}-->
+    <ul class="list-group">
+
+        <!--ng-repeat is like a for loop . {{todo}} is a local variable -->
+        <!--todo.title adds only the name and not the json object-->
+
+        <li ng-repeat="todo in todos" class="list-group-item">
+            <!--adds the 'x' mark using bootstrap component glyphicon-->
+            <!--$index happens as u iterate and can be accessed by the controller.-->
+            <!--angular is intelligent and it knows what li to remove from DOM
+        and doesnt have to render all the remaining elements when u remove a object-->
+            <!--<span ng-click="removeTodo($index)"-->
+
+            <span ng-click="removeTodo(todo)"
+                  class="pull-right glyphicon glyphicon-remove"></span>
+            <span ng-click="selectTodo($index)" class="glyphicon glyphicon-cog pull-right"></span>
+            <h3>{{todo.title}}</h3>
+                <p>{{todo.details}}</p>
+            <!--date is a common format given by angular filter. give after th epipe '|' -->
+            <label>{{todo.date| date }}</label>
+        </li>
+
+    </ul>
+</div>
+</div>
+
+
+</body>
+</html>

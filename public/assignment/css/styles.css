@@ -1,0 +1,87 @@
+input.form-control,
+textarea.form-control,
+select.form-control{
+    margin-bottom:10px;
+}
+
+#Testerh,#TesterI,#TesterY{
+    margin-left:0;
+}
+
+@media screen and (min-width: 970px) {
+    #Testerh, #TesterI,#TesterY{
+        margin-left:-15px;
+    }
+}
+body{
+    margin-top:70px;
+    margin-bottom: 60px;
+}
+
+.wd-widget{
+    margin:10px;
+}
+
+.navbar-default{
+    background-color: blue;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+
+.wd-widget > img {
+    width:100%;
+}
+
+.wd-widget > .wd-widget-toolbar{
+    position:absolute;
+    background-color:white;
+    opacity: 0.9;
+    right:15px;
+    padding:5px;
+    border-bottom-left-radius:10px;
+}
+
+
+
+.navbar-text .navbar-link{
+    color:white;
+
+}
+
+
+
+
+.navbar-text.pull-right{
+    margin-right: 15px;
+}
+
+@media screen and (min-width: 970px) {
+    #second-pane .navbar-text.pull-left{
+        margin-left: 15px;
+    }
+}
+.row #second-pane .navbar-text.pull-right{
+    margin-right: 0;
+}
+
+.list-group-item{
+    border: none;
+}
+/*.navbar-text.pull-right{*/
+    /*width:140px;*/
+/*}*/
+
+
+#checkNavbarHeaderCSS{
+    width:100%;
+}
+
+@media screen and (max-width: 767px) {
+
+    .navbar-header.pull-left{
+        margin-left: 15px;
+    }
+}
