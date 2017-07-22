@@ -1,0 +1,28 @@
+            <label for="name">Name</label>
+            <input id="name"
+                   class="form-control"
+                   ng-model="model.widget.name"
+                   value="Name"/>
+
+            <label for="text">Text</label>
+            <input class="form-control"
+                   ng-model="model.widget.text"
+                      id="text"
+                      value="Text" />
+
+            <label for="url">URL</label>
+            <input id="url"
+                   ng-model="model.widget.url"
+                   class="form-control"
+                   type="url"
+                   value="https://www.youtube.com/"/>
+
+            <label for="width">Width</label>
+            <input id="width"
+                   ng-model="model.widget.width"
+                    class="form-control"
+                    placeholder="100%"/>
+
+
+            <a ng-click="model.deleteWidget(model.widgetId)"
+               class="btn btn-danger btn-block">Delete</a>
