@@ -11,7 +11,7 @@
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                             </a>
                         </span>
-                        <a href="#" class="navbar-brand">Websites</a>
+                        <a href="" class="navbar-brand">Websites</a>
                     </div>
                     <div class="col-sm-1 pull-right">
                         <span class="navbar-text pull-right">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-xs-2 pull-right">
                         <span class="navbar-text pull-right">
-                            <a href="#!/user/{{model.userId}}/website" class="navbar-link">
+                            <a ng-click="model.createWebsite(website)" class="navbar-link">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </a>
                         </span>
@@ -85,8 +85,8 @@
                       rows="5"
                       id="description"></textarea>
 
-            <a ng-click="model.createWebsite(website)"
-               class="btn btn-success btn-block">Create</a>
+            <!--<a ng-click="model.createWebsite(website)"-->
+               <!--class="btn btn-success btn-block">Create</a>-->
         </div>
     </div>
 </div>

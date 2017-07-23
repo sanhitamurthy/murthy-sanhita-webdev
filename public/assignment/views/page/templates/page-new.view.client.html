@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-xs-2 pull-right">
                         <span class="navbar-text pull-right">
-                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                            <a ng-click="model.createPage(page)" class="navbar-link">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </a>
                         </span>
@@ -84,8 +84,8 @@
                    placeholder="Page Title"
                    id="title"/>
 
-            <a ng-click="model.createPage(page)"
-               class="btn btn-success btn-block">Create</a>
+            <!--<a ng-click="model.createPage(page)"-->
+               <!--class="btn btn-success btn-block">Create</a>-->
         </div>
     </div>
 </div>
