@@ -23,4 +23,4 @@ var myApp=require('./lectures/app');
 //prints in to the console
 myApp(app)
 
-app.listen(process.env.PORT || 4000);
+app.listen(process.env.PORT || 3000);
