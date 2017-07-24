@@ -11,6 +11,9 @@
         model.pageId=$routeParams['pageId'];
         model.websiteId=$routeParams['websiteId'];
         model.widgetUrl= widgetUrl;
+        model.trust=trust;
+        model.getYouTubeEmbedUrl=getYouTubeEmbedUrl;
+        model.widgetUrl=widgetUrl;
 
         function init(){
             model.widgets=widgetService.findWidgetsByPageId(model.pageId);
@@ -18,10 +21,7 @@
 
         init();
 
-        model.trust=trust;
-        model.getYouTubeEmbedUrl=getYouTubeEmbedUrl;
-        model.widgetUrl=widgetUrl;
-
+       
         function getYouTubeEmbedUrl(linkUrl) {
             var embedUrl="https://www.youtube.com/embed/";
             var linkUrlParts=linkUrl.split('/');
