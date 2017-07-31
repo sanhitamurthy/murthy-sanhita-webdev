@@ -8,6 +8,7 @@
         $routeProvider
             .when('/',{
                 templateUrl:'home.html'
+
             })
             .when('/login',{
                 templateUrl: 'views/user/templates/login.view.client.html',
@@ -88,6 +89,15 @@
                     controllerAs:'model'
                 }
             )
+
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId/flickr',{
+                    templateUrl:'views/widget/templates/widget-flickr-search.view.client.html',
+                    controller:'FlickrImageSearchController',
+                    controllerAs:'model'
+                }
+            )
+
+
 
 
 

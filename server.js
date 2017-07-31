@@ -21,6 +21,8 @@ var myApp=require('./lectures/app');
 // myApp.sayHello();
 
 //prints in to the console
-myApp(app)
+myApp(app);
+
+require('./assignment/app');
 
 app.listen(process.env.PORT || 3000);

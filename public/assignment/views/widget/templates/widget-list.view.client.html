@@ -20,10 +20,10 @@
 </nav>
 
 
+<!--wbdv is a attribute even callback. Agular recognises these and does the necessary functionalities-->
+<div class="container-fluid" wbdv-sortable callback="model.sortWidget(initial,final,newWidgetList)">
 
-<div class="container-fluid">
-
-    <div ng-repeat="widget in model.widgets" class="wd-widget">
+    <div ng-repeat="widget in model.widgets | orderBy:'index'" class="wd-widget" id="{{widget._id}}">
         <div class="wd-widget-toolbar">
             <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog"></span></a>

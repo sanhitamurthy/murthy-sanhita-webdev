@@ -18,18 +18,38 @@
                    type="url"
                    value="https://www.youtube.com/"/>
 
+            <a class="btn btn-info btn-block" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/flickr">
+                Search
+            </a>
+
             <label for="width">Width</label>
             <input id="width"
                    class="form-control"
                    ng-model="model.widget.width"
                     placeholder="100%"/>
 
-            <label for="file">Upload Image</label>
-            <input id="file"
-                   type="file" multiple class="form-control"/>
 
-            <a href=""
-               class="btn btn-block btn-success">Upload</a>
+
+
+
+
+            <form action="/api/upload"   method="post" enctype="multipart/form-data">
+                <input  name="myFile"    type="file" class="form-control"/>
+                <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
+                <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+                <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+                <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
+                <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+                <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+            </form>
+
+
+            <!--<label for="file">Upload Image</label>-->
+            <!--<input id="file"-->
+                   <!--type="file" multiple class="form-control"/>-->
+
+            <!--<a href=""-->
+               <!--class="btn btn-block btn-success">Upload</a>-->
 
     <a ng-click="model.deleteWidget(model.widgetId)"
        class="btn btn-danger btn-block">Delete</a>

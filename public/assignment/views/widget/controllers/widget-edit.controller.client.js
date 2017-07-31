@@ -11,26 +11,47 @@
         model.widgetId = $routeParams['widgetId'];
         model.pageId = $routeParams['pageId'];
         model.websiteId=$routeParams['websiteId'];
-
-
-
-        function init() {
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
-            model.widget = widgetService.findWidgetById(model.widgetId);
-        }
-
-        init();
-
         model.EditWidgetUrl=EditWidgetUrl;
         model.deleteWidget=deleteWidget;
         model.EditWidgetUrl=EditWidgetUrl;
         model.updateWidget=updateWidget;
+
+
+        function init() {
+            // widgetService
+            //     .findWidgetsByPageId(model.pageId)
+            //     .then(renderWidgets);
+            widgetService
+                .findWidgetById(model.widgetId)
+                .then(renderWidget);
+        }
+
+        init();
+
+
+
+        // function renderWidgets(widgets){
+        //     model.widgets=widgets;
+        // }
+
+        function renderWidget(widget){
+            model.widget=widget;
+        }
+
+
         function updateWidget(widgetId,widget)
         {
-            widgetService.updateWidget(widgetId,widget);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            widgetService
+                .updateWidget(widgetId,widget)
+                .then(function(res){
+                    console.log(res);
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                });
+
         }
+
         function EditWidgetUrl(widget) {
+            //console.log(widget);
             var url='views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'-edit.view.client.html';
             return url;
         }

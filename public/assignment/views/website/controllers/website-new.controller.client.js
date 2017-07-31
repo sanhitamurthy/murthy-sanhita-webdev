@@ -12,16 +12,25 @@
 
 
         function init() {
-            model.websites = websiteService.findAllWebsiteForUser(model.userId);
-
+            websiteService
+                .findAllWebsiteForUser(model.userId)
+                .then(renderWebsites)
         }
-
         init();
 
+        function renderWebsites(websites) {
+            model.websites = websites;
+        }
+
+
+
         function createWebsite(website){
-            website.developerId=model.userId;
-            websiteService.createWebsite(website);
-            $location.url('/user/'+model.userId+'/website')
+
+            websiteService
+                .createWebsite(website,model.userId)
+                .then(function(){
+                    $location.url('/user/'+model.userId+'/website')
+                });
         }
 
     }

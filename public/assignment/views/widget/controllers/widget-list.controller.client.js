@@ -11,17 +11,23 @@
         model.pageId=$routeParams['pageId'];
         model.websiteId=$routeParams['websiteId'];
         model.widgetUrl= widgetUrl;
+        model.sortWidget=sortWidget;
         model.trust=trust;
         model.getYouTubeEmbedUrl=getYouTubeEmbedUrl;
         model.widgetUrl=widgetUrl;
 
         function init(){
-            model.widgets=widgetService.findWidgetsByPageId(model.pageId);
+            widgetService
+                .findWidgetsByPageId(model.pageId)
+                .then(renderWidgets);
         }
 
         init();
 
-       
+        function renderWidgets(widgets){
+            model.widgets = widgets;
+        }
+
         function getYouTubeEmbedUrl(linkUrl) {
             var embedUrl="https://www.youtube.com/embed/";
             var linkUrlParts=linkUrl.split('/');
@@ -41,7 +47,11 @@
         }
 
 
-
+        function sortWidget(initial,final,newWidgetList){
+            widgetService
+                .sortWidget(model.pageId,initial,final,newWidgetList)
+                .then(null);
+        }
 
     }
 

@@ -3,7 +3,7 @@
         .module('WAM')
         .factory('userService',userService);
 
-    function userService(){
+    function userService($http){
 
         var users=[
             {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -22,58 +22,86 @@
         };
         return api;
 
-        function createUser(user){
-            user._id=(new Date()).getTime()+"";
-            user.created=new Date();//why do v use this
-            users.push(user);
-            return user;
+        function createUser(user) {
+            //create operaations use post, read uses get ,create new instances post,updtae use put,remove delete
+            var url = "/api/assignment/user";
+            return $http.post(url, user)
+                .then(function (response) {
+                    return response.data;
+                });
+
+            // user._id=(new Date()).getTime()+"";
+            // user.created=new Date();//why do v use this
+            // users.push(user);
+            // return user;
         }
 
         function findUserByName(username){
-            var user=users.find(function(user){
-                return user.username===username;
-            });
-            if(typeof user==='undefined'){
-                return null;
-            }
-            return user;
+
+            var url="/api/assignment/user?username="+username;
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+                });
+            // var user=users.find(function(user){
+            //     return user.username===username;
+            // });
+            // if(typeof user==='undefined'){
+            //     return null;
+            // }
+            // return user;
         }
 
         function findUserById(userId)
         {
-            for(var u in users)
-            {
-                if(users[u]._id===userId)
-                    return users[u];
-            }
-            return null;
+            var url="/api/assignment/user/"+userId;
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+                });
+
+            // for(var u in users)
+            // {
+            //     if(users[u]._id===userId)
+            //         return users[u];
+            // }
+            // return null;
         }
 
         function findUserByCredentials(username,password){
-            for(var u in users){
-                var user=users[u];
-                if(user.username===username&&
-                    user.password===password){
-                    return user;
-                }
-            }
-            return null;
+
+            var url="/api/assignment/user?username="+username+"&password="+password;
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+                });
+
+            // for(var u in users){
+            //     var user=users[u];
+            //     if(user.username===username&&
+            //         user.password===password){
+            //         return user;
+            //     }
+            // }
+            // return null;
         }
 
         function updateUser(userId, user)
         {
-            var updateUser=findUserById(userId);
-            updateUser.username=user.username;
-            updateUser.password=user.password;
-            updateUser.firstName=user.firstName;
-            updateUser.lastName=user.lastName;
+            var url="/api/assignment/user/"+userId;
+            return $http.put(url,user)
+                .then(function(response){
+                    return response.data;
+                });
         }
 
         function deleteUser(userId)
         {
-            var user=findUserById(userId);
-            var index=users.indexOf(user);
-            users.splice(index,1);
+            var url="/api/assignment/user/"+userId;
+            return $http.delete(url)
+                .then(function(response) {
+                    return response.data;
+                });
         }
     }
 })();

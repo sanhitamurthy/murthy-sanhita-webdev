@@ -14,22 +14,40 @@
 
 
 
-        function init() {
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
-            model.widget = widgetService.findWidgetById(model.widgetId);
-
-        }
-
-        init();
+        // function init() {
+        //     widgetService
+        //         .findWidgetsByPageId(model.pageId)
+        //         .then(renderWidgets);
+        //     widgetService
+        //         .findWidgetById(model.widgetId)
+        //         .then(renderWidget);
+        //
+        // }
+        //
+        // init();
+        //
+        // function renderWidgets(widgets){
+        //     model.widgets=widgets;
+        // }
+        //
+        // function renderWidget(widget){
+        //     model.widget=widget;
+        // }
 
         function createWidget(type){
-            var widget={
-                "id:":(new Date()).getTime()+"",
+            console.log(model.pageId);
+            var widget = {
+                "_id:":(new Date()).getTime()+"",
                 "widgetType":type
+                //"pageId": model.pageId
             };
-            widgetService.createWidget(model.pageId,widget);
+            widgetService
+                .createWidget(model.pageId,widget)
+                .then(function(res){
+                    //console.log(res);
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+res._id);
+                });
 
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+widget._id);
         }
 
     }

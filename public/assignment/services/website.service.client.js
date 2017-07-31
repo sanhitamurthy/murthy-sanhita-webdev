@@ -3,12 +3,12 @@
         .module('WAM')
         .service('websiteService',websiteService);
 
-    function websiteService(){
+    function websiteService($http){
         this.findAllWebsiteForUser=findAllWebsiteForUser;
         this.findWebsiteById=findWebsiteById;
         this.deleteWebsite=deleteWebsite;
         this.createWebsite=createWebsite;
-        this.updateWebsite=updateWebsite
+        this.updateWebsite=updateWebsite;
 
 
         var websites=[
@@ -22,40 +22,52 @@
         ];
 
 
-            function createWebsite(website){
-                website._id=(new Date()).getTime()+"";
-                websites.push(website);
+            function createWebsite(website,userId){
+                var url="/api/assignment/user/"+userId+"/website";
+                return $http.post(url,website)
+                    .then(function(response){
+                        return response.data;
+                    });
+
             }
 
             function deleteWebsite(websiteId){
-                var website=findWebsiteById(websiteId);
-                var index=websites.indexOf(website);
-                websites.splice(index,1);
+                var url="/api/assignment/website/"+websiteId;
+                return $http.delete(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+
+
             }
 
             function findAllWebsiteForUser(userId){
-            var results=[];
 
-            for(var v in websites)
-            {
-                if(websites[v].developerId===userId){
-                    results.push(websites[v]);
-                }
-            }
-            return results;
+                var url="/api/assignment/user/"+userId+"/website";
+                return $http.get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+
         }
 
 
         function findWebsiteById(websiteId){
-                return websites.find(function (website){
-                    return website._id===websiteId;
+            var url="/api/assignment/website/"+websiteId;
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
                 });
         }
 
         function updateWebsite(websiteId, website){
-            var updateWebsite=findWebsiteById(websiteId);
-            updateWebsite.name=website.name;
-            updateWebsite.description=website.description;
+            var url="/api/assignment/website/"+websiteId;
+            return $http.put(url,website)
+                .then(function(response){
+                    return response.data;
+                });
+
+
 
         }
     }

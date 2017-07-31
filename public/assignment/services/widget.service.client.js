@@ -3,12 +3,13 @@
         .module('WAM')
         .service('widgetService',widgetService);
 
-    function widgetService(){
+    function widgetService($http){
         this.findWidgetsByPageId=findWidgetsByPageId;
         this.findWidgetById=findWidgetById;
         this.deleteWidget=deleteWidget;
         this.createWidget=createWidget;
         this.updateWidget=updateWidget;
+        this.sortWidget=sortWidget;
 
 
         var widgets=[
@@ -24,52 +25,58 @@
         ];
 
 
+        function sortWidget(pageId,initial,final,newWidgetList){
+            var url="/api/assignment/page/"+pageId+"/widget?initial="+initial+"&final="+final;
+            return $http.put(url,newWidgetList)
+                .then(function(response){
+                    return response.data;
+                });
+        }
 
         function createWidget(pageId, widget) {
-            if(!widget._id) {
-                widget._id = (new Date()).getTime() + "";
-            }
-                widget.pageId=pageId;
-                widgets.push(widget);
+            var url="/api/assignment/page/"+pageId+"/widget";
+            return $http.post(url,widget)
+                .then(function(response){
+                    return response.data;
+                });
+
             }
 
             function deleteWidget(widgetId){
-                var widget=findWidgetById(widgetId);
-                var index=widgets.indexOf(widget);
-                widgets.splice(index,1);
+                var url="/api/assignment/widget/"+widgetId;
+                return $http.delete(url)
+                    .then(function(response){
+                        return response.data;
+                    });
             }
 
             function findWidgetsByPageId(pageId){
-            var results=[];
+                var url="/api/assignment/page/"+pageId+"/widget";
+                return $http.get(url)
+                    .then(function(response){
+                        return response.data;
 
-            for(var w in widgets)
-            {
-                if(widgets[w].pageId===pageId){
-                    results.push(widgets[w]);
-                }
-            }
-            return results;
+                    });
+
         }
 
         function findWidgetById(widgetId){
-                return widgets.find(function (widget){
-                    return widget._id===widgetId;
+            var url="/api/assignment/widget/"+widgetId;
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
                 });
         }
 
         function updateWidget(widgetId, widget){
-            var updateWidget=findWidgetById(widgetId);
-            for(fields in widget)
-            {
-                updateWidget[fields]=widget[fields];
-            }
+            var url="/api/assignment/widget/"+widgetId;
+            return $http.put(url,widget)
+                .then(function(response){
+                    return response.data;
+                });
+
         }
 
-        function deleteWidget(widgetId){
-                var widget=findWidgetById(widgetId);
-                var index=widgets.indexOf(widget);
-                widgets.splice(index,1);
-        }
     }
 
 
