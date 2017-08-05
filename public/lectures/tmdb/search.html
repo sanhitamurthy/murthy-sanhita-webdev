@@ -1,0 +1,18 @@
+<h1>TMDB API</h1>
+<h2> Search by Title</h2>
+<input class="form-control" placeholder="Friends" ng-model="tvTitle"/>
+<button ng-click="model.searchSeriesByTitle(tvTitle)" class="btn btn-primary btn-block">
+    Search
+</button>
+<table class="table">
+    <tr ng-repeat="show in model.shows.results">
+        <td>
+            <a href="#!/details/{{show.id}}">
+            {{show.original_name}}
+            </a>
+        </td>
+        <td>
+            <img ng-src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}" width="50px" />
+        </td>
+    </tr>
+</table>
