@@ -7,7 +7,7 @@
         this.findAllWebsiteForUser=findAllWebsiteForUser;
         this.findWebsiteById=findWebsiteById;
         this.deleteWebsite=deleteWebsite;
-        this.createWebsite=createWebsite;
+        this.createWebsiteForUser=createWebsiteForUser;
         this.updateWebsite=updateWebsite;
 
 
@@ -22,7 +22,7 @@
         ];
 
 
-            function createWebsite(website,userId){
+            function createWebsiteForUser(website,userId){
                 var url="/api/assignment/user/"+userId+"/website";
                 return $http.post(url,website)
                     .then(function(response){
@@ -31,8 +31,8 @@
 
             }
 
-            function deleteWebsite(websiteId){
-                var url="/api/assignment/website/"+websiteId;
+            function deleteWebsite(userId,websiteId){
+                var url="/api/assignment/user/"+userId+"/website/"+websiteId;
                 return $http.delete(url)
                     .then(function(response){
                         return response.data;

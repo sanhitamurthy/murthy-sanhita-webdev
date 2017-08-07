@@ -27,7 +27,7 @@
 
         function sortWidget(pageId,initial,final,newWidgetList){
             var url="/api/assignment/page/"+pageId+"/widget?initial="+initial+"&final="+final;
-            return $http.put(url,newWidgetList)
+            return $http.put(url)
                 .then(function(response){
                     return response.data;
                 });
@@ -54,6 +54,7 @@
                 var url="/api/assignment/page/"+pageId+"/widget";
                 return $http.get(url)
                     .then(function(response){
+
                         return response.data;
 
                     });
@@ -61,6 +62,7 @@
         }
 
         function findWidgetById(widgetId){
+                console.log(widgetId);
             var url="/api/assignment/widget/"+widgetId;
             return $http.get(url)
                 .then(function(response){

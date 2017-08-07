@@ -13,7 +13,6 @@
         model.websiteId=$routeParams['websiteId'];
         model.EditWidgetUrl=EditWidgetUrl;
         model.deleteWidget=deleteWidget;
-        model.EditWidgetUrl=EditWidgetUrl;
         model.updateWidget=updateWidget;
 
 
@@ -25,7 +24,6 @@
                 .findWidgetById(model.widgetId)
                 .then(renderWidget);
         }
-
         init();
 
 
@@ -51,12 +49,13 @@
         }
 
         function EditWidgetUrl(widget) {
-            //console.log(widget);
-            var url='views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'-edit.view.client.html';
+
+            var url='views/widget/templates/widget-'+widget.widgetType+'-edit.view.client.html';
             return url;
         }
 
         function deleteWidget(widgetId){
+
             widgetService.deleteWidget(widgetId);
             $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
         }

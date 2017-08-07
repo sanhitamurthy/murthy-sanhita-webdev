@@ -1,4 +1,5 @@
 var app=require('../../express');
+var pageModel=require('../models/page/page.model.server');
 
 
 var pages = [
@@ -17,50 +18,49 @@ app.put("/api/assignment/page/:pageId",updatePage);
 function createPage(req, res){
     var page=req.body;
     var websiteId=req.params['websiteId'];
-    page.websiteId=websiteId;
-    page._id = (new Date()).getTime() + "";
-    pages.push(page);
-    res.json(page);
+
+    pageModel
+        .createPage(websiteId,page)
+        .then(function(page){
+            res.send(page);
+    }, function (err) {
+            res.send(err);});
+    // page._id = (new Date()).getTime() + "";
+    // pages.push(page);
+    // res.json(page);
 }
 
-function findPageByWebsiteId(req,res)
-{
-    var results = [];
-
-    for (var w in pages) {
-        if (pages[w].websiteId === req.params.websiteId) {
-            results.push(pages[w]);
-        }
-    }
-
-   res.json(results);
+function findPageByWebsiteId(req,res) {
+    pageModel
+        .findPagesForWebsite(req.params.websiteId)
+        .then(function (pages) {
+            res.json(pages);
+        });
 }
 
 function deletePage(req,res){
     var pageId=req.params['pageId'];
-    for(var p in pages) {
-        if(pages[p]._id===pageId)
-        {
-            pages.splice(p, 1);
-            res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
+    var websiteId=req.params.websiteId;
+
+    pageModel
+        .deletePage(websiteId,pageId)
+        .then(function(status){
+            res.json(status);
+        }, function (err) {
+            res.send(err);})
 
 }
 
 function findPageById(req,res)
 {
     var pageId=req.params['pageId'];
-    for(var p in pages)
-    {
-        if(pages[p]._id===pageId) {
-            res.send(pages[p]);
-            return;
-        }
-    }
-    res.sendStatus(404);
+
+    pageModel
+        .findPageById(pageId)
+        .then(function(page){
+            res.json(page);
+        });
+
 
 }
 
@@ -68,15 +68,13 @@ function updatePage(req,res)
 {
     var pageId=req.params['pageId'];
     var page=req.body;
-    for(var p in pages)
-    {
-        if(pages[p]._id===pageId) {
-            pages[p]=page;
+    pageModel
+        .updatePage(pageId,page)
+        .then(function(status){
             res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
+        }, function (err) {
+            res.send(err);});
+
 }
 
 

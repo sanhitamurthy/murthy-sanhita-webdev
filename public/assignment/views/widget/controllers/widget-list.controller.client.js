@@ -14,9 +14,11 @@
         model.sortWidget=sortWidget;
         model.trust=trust;
         model.getYouTubeEmbedUrl=getYouTubeEmbedUrl;
-        model.widgetUrl=widgetUrl;
+
+
 
         function init(){
+
             widgetService
                 .findWidgetsByPageId(model.pageId)
                 .then(renderWidgets);
@@ -42,7 +44,9 @@
         }
 
         function widgetUrl(widget){
-            var url='views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'.view.client.html'
+
+
+            var url='views/widget/templates/widget-'+widget.widgetType+'.view.client.html'
             return url;
         }
 
