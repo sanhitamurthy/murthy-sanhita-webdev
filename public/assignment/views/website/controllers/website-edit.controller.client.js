@@ -33,8 +33,8 @@
 
         function deleteWebsite(websiteId) {
             websiteService
-                .deleteWebsite(websiteId)
-                .then(function () {
+                .deleteWebsite(model.userId,websiteId)
+                .then(function (status) {
                         $location.url('/user/' + model.userId + '/website')
                     }
                     , function () {
