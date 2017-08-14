@@ -18,9 +18,21 @@
             findUserByName:findUserByName,
             createUser:createUser,
             updateUser:updateUser,
-            deleteUser:deleteUser
+            deleteUser:deleteUser,
+            logout:logout
+
         };
         return api;
+
+
+        function logout()
+        {
+            var url="api/assignment/logout";
+            return $http.post(url)
+                .then(function(response){
+                    return response.data;
+                })
+        }
 
         function createUser(user) {
             //create operaations use post, read uses get ,create new instances post,updtae use put,remove delete

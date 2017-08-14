@@ -11,6 +11,8 @@
         model.userId=$routeParams['userId'];
         model.updateUser=updateUser;
         model.deleteUser=deleteUser;
+        model.logout=logout();
+
 
         // model.user=userService.findUserById(model.userId)
 
@@ -48,6 +50,16 @@
                     model.error="Unable to unregister you";
                 });
 
+        }
+
+
+
+        function logout(){
+            userService
+                .logout()
+                .then(function(){
+                    $location.url('/login');
+                });
         }
 
     }

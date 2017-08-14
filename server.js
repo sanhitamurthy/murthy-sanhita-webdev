@@ -1,8 +1,15 @@
 var app = require('./express');
+var cookieParser=require('cookie-parser');
+var session=require('express-session');
 var bodyParser = require('body-parser'); //parse json data
 //from form submissions
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cookieParser());
+app.use(session({secret:"put some text here"}));
+
+require('./lectures/session/app');
 
 
 app.set('view engine', 'ejs');
